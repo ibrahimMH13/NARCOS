@@ -6,7 +6,7 @@
             @forelse($threads as $treads)
                 <div class="col-md-8 col-md-offset-2">
                     <div class="panel panel-default">
-                        <div class="panel-heading">{{ $treads->title }}</div>
+                        <div class="panel-heading"><a class="btn btn-link" href="{{ $treads->path() }}">{{ $treads->title }}</a></div>
 
                         <div class="panel-body">
                             {{ $treads->body }}
