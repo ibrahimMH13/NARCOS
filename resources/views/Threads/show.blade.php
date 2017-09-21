@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div class="container" style="padding-bottom: 3%">
         <div class="row">
                 <div class="col-md-8 col-md-offset-2">
                     <div class="panel panel-default">
@@ -26,9 +26,14 @@
             @endforelse
         </div>
         <div class="row">
-            <form action="" >
+           <div class="col-md-7 col-md-offset-2">
+               {!! Form::open(["url"=>""]) !!}
+               <textarea class="form-control" rows="4"placeholder="Do You Have Reply !! Write Some Things About It,, ">
 
-            </form>
+                    </textarea>
+               {!! Form::submit('Reply.!',["class"=>"btn btn-default"]) !!}
+               {!! Form::close() !!}
+           </div>
         </div>
     </div>
 @endsection
