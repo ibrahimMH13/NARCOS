@@ -3,13 +3,19 @@
 @section('content')
     <div class="container">
         <div class="row">
-            @forelse($threads as $treads)
+            @forelse($threads as $thread)
                 <div class="col-md-8 col-md-offset-2">
                     <div class="panel panel-default">
-                        <div class="panel-heading"><a class="btn btn-link" href="{{ $treads->path() }}">{{ $treads->title }}</a></div>
+                        <div class="panel-heading">
+                            <p>{{$thread->user->name}} <small>Published  A</small> </p>
+                            <a class="btn btn-link" href="{{ $thread->path() }}">
+                                {{ $thread->title }}
+                            </a>
+                            <small>{{$thread->created_at->diffForHumans()}}</small>
+                        </div>
 
                         <div class="panel-body">
-                            {{ $treads->body }}
+                            {{ $thread->body }}
                         </div>
                     </div>
                 </div>
