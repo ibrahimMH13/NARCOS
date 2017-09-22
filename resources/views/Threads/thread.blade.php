@@ -11,7 +11,7 @@
                             <a class="btn btn-link" href="{{ $thread->path() }}">
                                 {{ $thread->title }}
                             </a>
-                            <small>{{$thread->created_at->diffForHumans()}}</small>
+                            <sub>{{$thread->created_at->diffForHumans()}}</sub>
                         </div>
 
                         <div class="panel-body">

@@ -5,7 +5,7 @@
         <div class="row">
                 <div class="col-md-8 col-md-offset-2">
                     <div class="panel panel-default">
-                        <div class="panel-heading">{{ $thread->title }} {{$thread->created_at->diffForHumans()}}</div>
+                        <div class="panel-heading">{{ $thread->title }} <sub>{{$thread->created_at->diffForHumans()}}</sub></div>
                         <div class="panel-body">
                          {{$thread->body}}
                         </div>
