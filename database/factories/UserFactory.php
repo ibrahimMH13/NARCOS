@@ -27,6 +27,7 @@ $factory->define(App\Models\Thread::class, function (Faker $faker) {
 
     return [
         'user_id' => function(){ return factory('App\User')->create()->id;},
+        'channel_id' => function(){ return factory('App\Models\Channel')->create()->id;},
         'title' => $faker->sentence,
          'body' => $faker->paragraph,
      ];
@@ -39,3 +40,12 @@ $factory->define(App\Models\Reply::class, function (Faker $faker) {
         'body' => $faker->paragraph,
      ];
 });
+
+$factory->define(App\Models\Channel::class, function (Faker $faker) {
+    $myslug = $faker->word;
+    return [
+        'name' => $myslug,
+        "slug" =>  $myslug,
+     ];
+});
+

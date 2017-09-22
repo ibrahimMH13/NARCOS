@@ -35,4 +35,9 @@ class Thread extends Model
         return $this->hasMany(Reply::class,'thread_id');
     }
 
+    public function channel(){
+
+        return $this->belongsTo(Channel::class);
+    }
+
 }
