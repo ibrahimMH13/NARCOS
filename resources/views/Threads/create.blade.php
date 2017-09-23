@@ -18,7 +18,7 @@
                                  <label for="channel">Category</label>
                                 <select id="channel" name="channel_id" class="form-control">
                                     @forelse(\App\Models\Channel::get() as $item)
-                                       <option value="{{$item->slug}}">{{$item->name}}</option>
+                                       <option value="{{$item->id}}">{{$item->name}}</option>
                                     @empty
                                     <option>No There category yet</option>
                                     @endforelse
