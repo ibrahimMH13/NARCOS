@@ -34,7 +34,7 @@ class ReplyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Thread $thread)
+    public function store($channel_id,Thread $thread)
     {
         //
 
