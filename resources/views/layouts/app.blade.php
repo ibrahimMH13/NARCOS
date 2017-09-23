@@ -56,7 +56,7 @@
 
                                 ?>
                                 <ul class="dropdown-menu" role="menu">
-                                    @forelse(\App\Models\Channel::latest()->get() as $item)
+                                    @forelse($channels as $item)
                                         <li>
                                             <a href="/threads/{{$item->slug}}">{{$item->name}}</a>
                                          </li>
