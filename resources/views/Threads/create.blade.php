@@ -15,6 +15,17 @@
                                 {!! Form::text('title',null, ['id'=>"title",'class' => 'form-control']) !!}
                             </div>
                             <div class="form-group">
+                                 <label for="channel">Category</label>
+                                <select id="channel" name="channel_id" class="form-control">
+                                    @forelse(\App\Models\Channel::get() as $item)
+                                       <option value="{{$item->slug}}">{{$item->name}}</option>
+                                    @empty
+                                    <option>No There category yet</option>
+                                    @endforelse
+                                </select>
+
+                            </div>
+                            <div class="form-group">
                                 <label for="body">Post</label>
                                 {!! Form::textarea('body',null, ["body"=>"body",'class' => 'form-control']) !!}
                             </div>
