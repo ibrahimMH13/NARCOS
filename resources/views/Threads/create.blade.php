@@ -8,6 +8,14 @@
                     <div class="panel-heading">New Thread</div>
 
                     <div class="panel-body">
+                        @if(count($errors))
+                         <ul>
+                             @foreach($errors->all() as $er)
+                                <li>{{$er}}</li>
+                             @endforeach
+                         </ul>
+                         @endif
+
                         <div class="col-md-7 col-md-offset-2">
                             {!! Form::open() !!}
                             <div class="form-group">
