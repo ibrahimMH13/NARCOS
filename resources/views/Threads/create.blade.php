@@ -12,7 +12,7 @@
                             {!! Form::open() !!}
                             <div class="form-group">
                                 <label for="title">Title</label>
-                                {!! Form::text('title',null, ['id'=>"title",'class' => 'form-control']) !!}
+                                {!! Form::text('title',old('title'), ['id'=>"title",'class' => 'form-control']) !!}
                             </div>
                             <div class="form-group">
                                  <label for="channel">Category</label>
@@ -27,7 +27,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="body">Post</label>
-                                {!! Form::textarea('body',null, ["body"=>"body",'class' => 'form-control']) !!}
+                                {!! Form::textarea('body',old('body'), ["body"=>"body",'class' => 'form-control']) !!}
                             </div>
                             {!! Form::submit('Publish',['class' => 'btn btn-default']) !!}
                             {!! Form::close() !!}

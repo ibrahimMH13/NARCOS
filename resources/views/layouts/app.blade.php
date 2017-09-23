@@ -50,6 +50,24 @@
                             <li><a href="/threads">Threads</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    Category <span class="caret"></span>
+                                </a>
+                                <?php
+
+                                ?>
+                                <ul class="dropdown-menu" role="menu">
+                                    @forelse(\App\Models\Channel::latest()->get() as $item)
+                                        <li>
+                                            <a href="/threads/{{$item->slug}}">{{$item->name}}</a>
+                                         </li>
+                                    @empty
+                                        <li>No there category Net</li>
+                                     @endforelse
+
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
