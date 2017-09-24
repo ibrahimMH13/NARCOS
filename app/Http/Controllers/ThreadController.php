@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Filters\ThreadFilter;
 use App\Models\Channel;
 use App\Models\Thread;
 use App\User;
@@ -19,18 +20,10 @@ class ThreadController extends Controller
         $this->middleware('auth')->except('show','index');
     }
 
-    public function index(Channel $channel)
-    {
+    public function index(Channel $channel,ThreadFilter $filter){
         //
-        if($channel->exists)
-            $threads = $channel->thread();
-         else
-            $threads = Thread::latest();
-        if($username = request("by")){
-           $user =User::where('name',$username)->firstOrFail();
-           $threads->where('user_id',$user->id);
-        }
-        $threads = $threads->get();
+
+        $threads = $this->getThread($channel,$filter);
         return view('Threads.thread',compact('threads'));
     }
 
@@ -113,4 +106,18 @@ class ThreadController extends Controller
     {
         //
     }
+
+    /**
+     * @param Channel $channel
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany|\Illuminate\Database\Query\Builder|static
+     */
+    protected function getThread(Channel $channel,ThreadFilter $filters)
+    {
+        $threads = Thread::latest()->filter($filters);
+        if($channel->exists){
+            $threads->where("channel_id",$channel->id);
+        }
+         return $threads->get();
+    }
+
 }

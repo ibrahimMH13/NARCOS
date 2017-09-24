@@ -9,6 +9,11 @@ class Thread extends Model
 {
     //
     protected $guarded =[];
+
+    //bootable
+    
+
+    ///
     public function path(){
 
         return "/threads/{$this->channel->slug}/".$this->id;
@@ -24,6 +29,13 @@ class Thread extends Model
        return $this->replies()->create($newReply);
     }
 
+    public function scopeFilter($query,$filters){
+        return $filters->apply($query);
+    }
+
+    public function getCountReply(){
+       return $this->replies()->count();
+    }
             //RelationShip
     public function user(){
 
