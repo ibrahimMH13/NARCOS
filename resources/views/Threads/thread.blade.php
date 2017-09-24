@@ -8,9 +8,16 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <p>{{$thread->user->name}} <small>Published  A</small> </p>
-                            <a class="btn btn-link" href="{{ $thread->path() }}">
-                                {{ $thread->title }}
-                            </a>
+                            <div class="level">
+                                <h5 class="flax"><a class="btn btn-link" href="{{ $thread->path() }}">
+                                        {{ $thread->title }}
+                                    </a>
+                                </h5>
+                                <strong>
+                                    {{ $thread->replies_count.' '.str_plural('Reply',$thread->replies_count) }}
+                                </strong>
+                             </div>
+
                             <sub>{{$thread->created_at->diffForHumans()}}</sub>
                         </div>
 
