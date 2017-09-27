@@ -9,6 +9,7 @@ class Favorite extends Model
     //
     protected $guarded=[];
 
+
     //RelationShip
 
 public function reply(){

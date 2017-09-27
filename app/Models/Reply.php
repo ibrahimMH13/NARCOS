@@ -12,7 +12,16 @@ class Reply extends Model
 
     //RelationShip
     protected $guarded =[];
+    public function addFavorite(){
 
+        return  $this->favorite()->create([
+            "user_id" =>auth()->user()->id,
+            "favorite_id" =>$this->id,
+            "favorite_type" =>get_class($this),
+        ]);
+
+
+    }
     // RelatioShip
     public function user(){
 

@@ -34,15 +34,11 @@ class FavoriteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,Reply $reply)
+    public function store(Reply $reply)
     {
         //
-        return Reply::create([
-            "user_id" =>auth()->user()->id,
-            "favorite_id" =>$reply->id,
-            "favorite_type" =>get_class($reply),
+        return $reply->addFavorite();
 
-        ]);
     }
 
     /**
