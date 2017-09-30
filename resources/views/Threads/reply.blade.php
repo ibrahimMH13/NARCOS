@@ -19,7 +19,8 @@
                     {{$reply->body}}
                  </div>
                 {!! Form::open(["url"=>"/replies/$reply->id/favorite"]) !!}
-              <button class="btn btn-default">
+              <button class="btn btn-default" {{$reply->isFavorite()?'disabled':''}}>
+                  {{ $reply->favorite->count()?$reply->favorite->count():'' }}
                   <i class="glyphicon glyphicon-heart" style="color:#d62728"></i>
               </button>
                 {!! Form::close() !!}

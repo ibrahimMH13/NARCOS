@@ -12,9 +12,11 @@ class Reply extends Model
 
     //RelationShip
     protected $guarded =[];
+
+
     public function addFavorite(){
         $u=auth()->user()->id;
-         if($this->favorite()->where('user_id',auth()->user()->id)->exists()){
+         if(!$this->favorite()->where('user_id',auth()->user()->id)->exists()){
             return  $this->favorite()->create([
                 "user_id" =>auth()->user()->id,
                 "favorite_id" =>$this->id,
@@ -23,6 +25,11 @@ class Reply extends Model
         }{
              return false;
         }
+
+    }
+
+    public function isFavorite(){
+        return $this->favorite()->where('user_id',auth()->user()->id)->exists();
 
     }
     // RelatioShip
