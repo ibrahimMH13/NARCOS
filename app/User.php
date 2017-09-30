@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\Favorite;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -26,4 +27,11 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    //RelationShip
+
+    public function favorite(){
+
+        return $this->hasMany(Favorite::class,'user_id');
+    }
 }

@@ -13,19 +13,22 @@ class Reply extends Model
     //RelationShip
     protected $guarded =[];
     public function addFavorite(){
-
-        if($this->favorite()->where('user_id',auth()->user()->id)->exists){
+        $u=auth()->user()->id;
+         if($this->favorite()->where('user_id',auth()->user()->id)->exists()){
             return  $this->favorite()->create([
                 "user_id" =>auth()->user()->id,
                 "favorite_id" =>$this->id,
                 "favorite_type" =>get_class($this),
             ]);
+        }{
+             return false;
         }
+
     }
     // RelatioShip
     public function user(){
 
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'user_id');
     }
 
     public function thread(){
@@ -35,7 +38,7 @@ class Reply extends Model
 
     public function favorite(){
 
-        return $this->hasMany(Favorite::class);
+        return $this->morphMany(Favorite::class,'favorite');
     }
 
 }

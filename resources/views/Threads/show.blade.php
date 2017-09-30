@@ -14,7 +14,15 @@
             </div>
               <div class="col-md-7 col-md-offset-1">
                     <div class="panel panel-default">
-                        <div class="panel-heading">{{ $thread->title }} <sub>{{$thread->created_at->diffForHumans()}}</sub></div>
+                        <div class="panel-heading">
+                            <div class="level">
+                                <span class="flax">
+                                {{ $thread->title }}
+                                </span>
+                                <sub>
+                                    {{$thread->created_at->diffForHumans()}}</sub>
+                            </div>
+                            </div>
                         <div class="panel-body">
                          {{$thread->body}}
                         </div>

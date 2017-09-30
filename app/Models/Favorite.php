@@ -14,6 +14,6 @@ class Favorite extends Model
 
 public function reply(){
 
-        return $this->belongsTo(Reply::class);
+        return $this->morphTo();
 }
 }
