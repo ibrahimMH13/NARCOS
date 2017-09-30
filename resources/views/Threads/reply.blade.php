@@ -18,12 +18,20 @@
                 <div class="flax">
                     {{$reply->body}}
                  </div>
+                @if(auth()->check())
                 {!! Form::open(["url"=>"/replies/$reply->id/favorite"]) !!}
-              <button class="btn btn-default" {{$reply->isFavorite()?'disabled':''}}>
+              <button class="btn btn-default">
                   {{ $reply->favorite->count()?$reply->favorite->count():'' }}
                   <i class="glyphicon glyphicon-heart" style="color:#d62728"></i>
               </button>
                 {!! Form::close() !!}
+                @else
+                    <span class="btn btn-default">
+                        {{ $reply->favorite->count()?$reply->favorite->count():'' }}
+                        <i class="glyphicon glyphicon-heart">  </i>
+                    </span>
+
+                @endif
             </div>
 
         </div>

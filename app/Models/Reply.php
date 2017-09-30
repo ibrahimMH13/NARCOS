@@ -16,14 +16,14 @@ class Reply extends Model
 
     public function addFavorite(){
         $u=auth()->user()->id;
-         if(!$this->favorite()->where('user_id',auth()->user()->id)->exists()){
+         if(!$this->favorite()->where('user_id',$u)->exists()){
             return  $this->favorite()->create([
-                "user_id" =>auth()->user()->id,
+                "user_id" =>$u,
                 "favorite_id" =>$this->id,
                 "favorite_type" =>get_class($this),
             ]);
         }{
-             return false;
+            $this->favorite()->where('user_id',$u)->delete();
         }
 
     }
