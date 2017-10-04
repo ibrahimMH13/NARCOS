@@ -9,6 +9,7 @@ class Thread extends Model
 {
     //
     protected $guarded =[];
+    protected $with=['user'];
 
     //bootable
     protected static function boot()
@@ -52,7 +53,7 @@ class Thread extends Model
 
     public function replies(){
 
-        return $this->hasMany(Reply::class,'thread_id');
+        return $this->hasMany(Reply::class,'thread_id')->withCount('favorite');
     }
 
     public function channel(){

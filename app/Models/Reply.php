@@ -11,7 +11,8 @@ class Reply extends Model
 
 
     //RelationShip
-    protected $guarded =[];
+    protected $guarded =['favorite'];
+    protected $with=[];
 
 
     public function addFavorite(){
