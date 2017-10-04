@@ -5,7 +5,16 @@
         <div class="row">
              <div class="col-md-3">
                  <div class="panel panel-default">
-                    <div class="panel-heading"><p style="margin:2%"> <strong>Info :</strong> </p></div>
+                    <div class="panel-heading">
+                        <p style="margin:2%">
+                            <strong>Info :</strong>
+                        <strong> Publish By
+                            <a href="/home/profile/{{$thread->user->name}}">
+                                {{$thread->user->name}}
+                            </a>
+                        </strong>
+                        </p>
+                     </div>
                     <div class="panel-body">
                     this post has  {{ $thread->replies_count.' '.str_plural("comment",$thread->replies_count) }}
                     </div>
