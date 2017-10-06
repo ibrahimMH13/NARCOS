@@ -65,13 +65,13 @@
 
                         <ul class="dropdown-menu" role="menu">
                             <li>
-                                <a href="/home/profile/{{auth()->user()->name}}">
+                                <a class="glyphicon glyphicon-user" href="/home/profile/{{auth()->user()->name}}">
                                     Profile
                                 </a>
 
                             </li>
-                            <li>
-                                <a href="{{ route('logout') }}"
+                            <li >
+                                <a class="glyphicon glyphicon-new-window" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     Logout
