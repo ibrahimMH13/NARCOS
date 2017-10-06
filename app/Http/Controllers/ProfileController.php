@@ -13,7 +13,7 @@ class ProfileController extends Controller
 
         return view('profile.show',[
             "profile"=>$user,
-            "threads"=>$user->thread()->paginate(1)
+            "threads"=>$user->thread()->paginate(5)
         ]);
     }
 }

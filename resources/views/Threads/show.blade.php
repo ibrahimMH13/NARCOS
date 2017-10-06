@@ -35,6 +35,11 @@
                         <div class="panel-body">
                          {{$thread->body}}
                         </div>
+                        <div class="panel-footer">
+                            {!! Form::open() !!}
+                            <button class="btn btn-link"><i class="glyphicon glyphicon-remove" style="color: #dd1144;"></i></button>
+                            {!! Form::close() !!}
+                        </div>
                     </div>
                 @forelse($replies as $reply)
                     @include('Threads.reply')
@@ -65,6 +70,7 @@
                 @endif
 
             </div>
+
             {{$replies->links()}}
         </div>
 
