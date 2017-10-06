@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Models\Favorite;
+use App\Models\Thread;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -38,6 +39,11 @@ class User extends Authenticatable
     public function favorite(){
 
         return $this->hasMany(Favorite::class,'user_id');
+    }
+
+    public function thread(){
+
+        return $this->hasMany(Thread::class);
     }
 
 }
