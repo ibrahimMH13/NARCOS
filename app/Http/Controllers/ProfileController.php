@@ -12,7 +12,8 @@ class ProfileController extends Controller
     public function show(User $user){
 
         return view('profile.show',[
-            "profile"=>$user
+            "profile"=>$user,
+            "threads"=>$user->thread()->paginate(1)
         ]);
     }
 }

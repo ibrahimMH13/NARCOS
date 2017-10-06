@@ -13,7 +13,7 @@
                     </p>
                 </div>
             </div>
-            @forelse($profile->thread as $thread)
+            @forelse($threads as $thread)
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -37,6 +37,7 @@
                 @empty
                 <p> No there Activity Yet</p>
             @endforelse
+            {{$threads->links()}}
         </div>
     </div>
 @endsection
