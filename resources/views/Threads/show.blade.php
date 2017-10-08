@@ -36,7 +36,7 @@
                          {{$thread->body}}
                         </div>
                         <div class="panel-footer">
-                            {!! Form::open() !!}
+                            {!! Form::open(["method"=>"delete","url"=>$thread->path()])!!}
                             <button class="btn btn-link"><i class="glyphicon glyphicon-remove" style="color: #dd1144;"></i></button>
                             {!! Form::close() !!}
                         </div>

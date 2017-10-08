@@ -105,10 +105,11 @@ class ThreadController extends Controller
      * @param  \App\Models\Thread  $thread
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Thread $thread)
+    public function destroy(Channel $channel,Thread $thread)
     {
         //
-        "fuck!!";
+      $thread->delete();
+      return redirect('/home');
     }
 
     /**

@@ -19,6 +19,11 @@ class Thread extends Model
 
             $buider->withCount('replies');
         });
+
+        static::deleting(function($thread){
+
+            $thread->replies()->delete();
+        });
     }
 
     ///
