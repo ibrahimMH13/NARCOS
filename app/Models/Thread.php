@@ -29,7 +29,7 @@ class Thread extends Model
 
            Activity::create([
                "user_id" =>auth()->user()->id,
-               "type" =>    "created_thread",
+               "type" =>    "created_".strtolower((new\ReflectionClass($thread))->getShortName()),
                "subject_id" =>$thread->id,
                "subject_type" =>get_class($thread)
            ]);
