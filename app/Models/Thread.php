@@ -24,6 +24,17 @@ class Thread extends Model
 
             $thread->replies()->delete();
         });
+
+       static::created(function ($thread){
+
+           Activity::create([
+               "user_id" =>auth()->user()->id,
+               "type" =>    "created_thread",
+               "subject_id" =>$thread->id,
+               "subject_type" =>get_class($thread)
+           ]);
+
+       });
     }
 
     ///
