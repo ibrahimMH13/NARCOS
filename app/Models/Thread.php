@@ -2,13 +2,15 @@
 
 namespace App\Models;
 
+use App\RecordActiviteable;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Thread extends Model
 {
     //
-    protected $guarded =[];
+    use RecordActiviteable;
+     protected $guarded =[];
     protected $with=['user'];
 
     //bootable
@@ -24,18 +26,7 @@ class Thread extends Model
 
             $thread->replies()->delete();
         });
-
-       static::created(function ($thread){
-
-           Activity::create([
-               "user_id" =>auth()->user()->id,
-               "type" =>    "created_".strtolower((new\ReflectionClass($thread))->getShortName()),
-               "subject_id" =>$thread->id,
-               "subject_type" =>get_class($thread)
-           ]);
-
-       });
-    }
+     }
 
     ///
     public function path(){
