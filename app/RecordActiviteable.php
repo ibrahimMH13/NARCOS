@@ -18,10 +18,15 @@ trait RecordActiviteable
     {
 
 
-         static::created(function ($thread) {
-           $e='created';
-            $thread->recordActivity($e);
+        foreach (static::getTypeEvents() as $even){
+            static::$even(function ($model) use ($even){
+                $model->recordActivity($even);
+            });
+        }
+        static::deleting(function ($model){
+            $model->activity()->delete();
         });
+
     }
 
 
@@ -37,7 +42,7 @@ trait RecordActiviteable
 
     }
 
-    protected function getTypeEvent(){
+    protected static function getTypeEvents(){
             return ["created"];
     }
     protected function getActivityType($event){
