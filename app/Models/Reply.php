@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\RecordActiviteable;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 
@@ -9,7 +10,7 @@ class Reply extends Model
 {
     //
 
-
+    use RecordActiviteable;
     //RelationShip
     protected $guarded =['favorite'];
     protected $with=[];
