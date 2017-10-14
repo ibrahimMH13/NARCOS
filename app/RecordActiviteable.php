@@ -18,6 +18,7 @@ trait RecordActiviteable
     {
 
 
+        if(auth()->guest()) return false;
         foreach (static::getTypeEvents() as $even){
             static::$even(function ($model) use ($even){
                 $model->recordActivity($even);
@@ -43,7 +44,7 @@ trait RecordActiviteable
     }
 
     protected static function getTypeEvents(){
-            return ["created"];
+            return ["created","Deleted"];
     }
     protected function getActivityType($event){
 
