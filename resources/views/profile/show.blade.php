@@ -13,12 +13,17 @@
                     </p>
                 </div>
             </div>
-            @forelse($threads as $thread)
-           
+
+
+            @forelse($activites as $activity)
+
+         @include("profile.Activites.$activity->type")
                 @empty
                 <p> No there Activity Yet</p>
             @endforelse
-            {{$threads->links()}}
-        </div>
+         </div>
+
+
+
     </div>
 @endsection

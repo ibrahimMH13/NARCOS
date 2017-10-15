@@ -24,9 +24,9 @@ trait RecordActiviteable
                 $model->recordActivity($even);
             });
         }
-        static::deleting(function ($model){
+      /*  static::deleting(function ($model){
             $model->activity()->delete();
-        });
+        });*/
 
     }
 
