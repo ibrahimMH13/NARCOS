@@ -35,7 +35,7 @@ trait RecordActiviteable
 
     protected function recordActivity($event){
 
-        $this->activity()->create([
+        $this->Activity()->create([
 
             "user_id" =>auth()->user()->id,
             "type"  => $this->getActivityType($event),
@@ -53,7 +53,7 @@ trait RecordActiviteable
 
     //RelactionShip
 
-    public function activity(){
+    public function Activity(){
 
         return $this->morphMany('App\Models\Activity','subject');
     }
