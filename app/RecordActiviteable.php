@@ -24,10 +24,10 @@ trait RecordActiviteable
                 $model->recordActivity($even);
             });
         }
-      /*  static::deleting(function ($model){
-            $model->activity()->delete();
-        });*/
+         static::deleting(function ($model) {
+             $model->activity()->delete();
 
+          });
     }
 
 

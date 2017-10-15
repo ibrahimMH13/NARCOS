@@ -3,14 +3,18 @@
     <div class="panel panel-default">
         <div class="panel-heading">
             You reply on
+            <a href="{{$activity->subject->thread->path()}}">
+                {{$activity->subject->thread->title}}
+            </a>
+
             <p class="level">
                  <span class="flax">
-                             <a href="{{$activity->subject->path()}}">
-                                 {{$activity->subject->title}}
-                             </a>
+                             <span>
+                                 {{$activity->subject->body}}
+                             </span>
                     </span>
                 <span>
-   {{$activity->subject->created_at->diffForHumans()}}
+   {{$activity->subject->thread->created_at->diffForHumans()}}
                    </span>
             </p>
             </a>

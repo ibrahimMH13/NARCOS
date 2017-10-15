@@ -16,8 +16,7 @@
 
 
             @forelse($activites as $activity)
-
-         @include("profile.Activites.$activity->type")
+          @include("profile.Activites.$activity->type")
                 @empty
                 <p> No there Activity Yet</p>
             @endforelse
