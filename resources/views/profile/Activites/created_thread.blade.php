@@ -1,20 +1,16 @@
-
-<div class="col-md-8 col-md-offset-2">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            You publish
-                 <p class="level">
-                 <span class="flax">
-                             <a href="{{$activity->subject->path()}}">
-                                 {{$activity->subject->title}}
-                             </a>
-                    </span>
-                    <span>
-   {{$activity->subject->created_at->diffForHumans()}}
-                   </span>
-                </p>
+@component('profile.Activites.activite')
+    @slot('heading')
+        {{$profile->name}} Posted New Thread:
+        <strong> <a href="/{{$activity->subject->path()}}">{{$activity->subject->title}}</a></strong><br>
+        <span class="flex">
+           <a href="#">
+            <small>{{'  '.$activity->created_at->diffForHumans()}}
+</small>
             </a>
+        </span>
+    @endslot
+    @slot('body')
+        {{$activity->subject->body}}
 
-        </div>
-     </div>
-</div>
+    @endslot
+@endcomponent

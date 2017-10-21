@@ -1,24 +1,19 @@
-
-<div class="col-md-8 col-md-offset-2">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            You reply on
-            <a href="{{$activity->subject->thread->path()}}">
-                {{$activity->subject->thread->title}}
+@component('profile.Activites.activite')
+    @slot('heading')
+        {{$profile->name}} replied On post
+        <strong>
+            <a href="/{{$activity->subject->thread->path()}}">{{$activity->subject->thread->title}}</a>
+        </strong><br>
+        <span class="flex">
+            <a href="#">
+            <small>{{'  '.$activity->created_at->diffForHumans()}}
+</small>
             </a>
+        </span>
 
-            <p class="level">
-                 <span class="flax">
-                             <span>
-                                 {{$activity->subject->body}}
-                             </span>
-                    </span>
-                <span>
-   {{$activity->subject->thread->created_at->diffForHumans()}}
-                   </span>
-            </p>
-            </a>
+    @endslot
+    @slot('body')
+        {{$activity->subject->body}}
 
-        </div>
-    </div>
-</div>
+    @endslot
+@endcomponent
