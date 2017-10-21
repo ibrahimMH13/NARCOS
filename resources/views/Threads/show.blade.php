@@ -65,6 +65,12 @@
                         </div>
                     </div>
 
+                  <div class="alert alert-success" v-show="">
+                      <flash msg=""></flash>
+                  </div>
+
+
+                </flash>
                 @else
                     <p class="text-capitalize text-center alert alert-dismissible alert-warning">
                         <span>Join Us ,Just <a href="">login</a> or <a href="#">Register</a></span>

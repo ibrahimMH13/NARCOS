@@ -44,7 +44,7 @@ class ReplyController extends Controller
             "user_id" => auth()->user()->id
         ];
         $thread->addReply($newReply);
-        return back();
+        return back()->withFlash('Has been Published New Post');
     }
 
     /**

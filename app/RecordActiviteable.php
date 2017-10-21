@@ -44,7 +44,7 @@ trait RecordActiviteable
     }
 
     protected static function getTypeEvents(){
-            return ["created","Deleted"];
+            return ["created"];
     }
     protected function getActivityType($event){
 

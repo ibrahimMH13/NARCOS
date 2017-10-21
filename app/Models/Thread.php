@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Favoriteable;
 use App\RecordActiviteable;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
@@ -9,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 class Thread extends Model
 {
     //
-    use RecordActiviteable;
+     use RecordActiviteable;
      protected $guarded =[];
     protected $with=['user'];
 
