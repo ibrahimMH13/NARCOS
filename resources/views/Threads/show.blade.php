@@ -21,7 +21,7 @@
 
                  </div>
             </div>
-              <div class="col-md-7 col-md-offset-1">
+               <div class="col-md-7 col-md-offset-1">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <div class="level">
@@ -65,13 +65,9 @@
                         </div>
                     </div>
 
-                  <div class="alert alert-success" v-show="">
-                      <flash msg=""></flash>
-                  </div>
 
 
-                </flash>
-                @else
+                 @else
                     <p class="text-capitalize text-center alert alert-dismissible alert-warning">
                         <span>Join Us ,Just <a href="">login</a> or <a href="#">Register</a></span>
                     </p>

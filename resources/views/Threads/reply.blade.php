@@ -14,7 +14,7 @@
         </div>
 
         <div class="panel-body">
-            <div class="level">
+             <div class="level">
                 <div class="flax">
                     {{$reply->body}}
                  </div>

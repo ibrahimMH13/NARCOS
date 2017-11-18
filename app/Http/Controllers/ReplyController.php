@@ -44,7 +44,7 @@ class ReplyController extends Controller
             "user_id" => auth()->user()->id
         ];
         $thread->addReply($newReply);
-        return back()->withFlash('Has been Published New Post');
+        return redirect($thread->path())->with('flash','Has been Published New Post');
     }
 
     /**

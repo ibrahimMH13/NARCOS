@@ -1,35 +1,10 @@
 <template>
-    <div>
-        <strong>
-            Success
-        </strong>
-
-        <p>
-            {{ body }}
-        </p>
+    <div class="alert alert-warning alert-dismissible msg-flash" role="alert" v-show="show">
+        <button type="button" class="close pull-left" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Wo0oW !!</strong> {{ body }}.
     </div>
-</template>
 
-<script>
-    export default {
-        props:['msg'],
-         data(){
-            return{
-
-                body:'',
-                show:false
-            }
-        },
-        created(){
-
-            if(this.msg){
-                this.body=this.msg;
-                this.show=true;
-            }
-        }
-     }
-</script>
-<style>
+</template><style>
     .alertFlash{
 
         position: fixed;
@@ -38,3 +13,28 @@
     }
 
 </style>
+<script>
+    export default {
+        props:['msg'],
+         data(){
+            return{
+
+                body:'',
+                show:true
+            }
+        },
+        created(){
+
+            if(this.msg){
+                this.body=this.msg;
+                this.show=true;
+                setTimeout(this.show=false,3000);
+            }
+         },
+        method(){
+
+
+        }
+     }
+</script>
+
