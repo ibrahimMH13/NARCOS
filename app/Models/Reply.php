@@ -19,7 +19,7 @@ class Reply extends Model
 
     public function path(){
 
-        return $this->thread->path();
+        return "/".$this->thread->path()."#reply-".$this->id;
     }
     // RelatioShip
     public function user(){

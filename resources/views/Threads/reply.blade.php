@@ -1,4 +1,4 @@
-<div class="col-md-11 col-md-offset-1">
+<div class="col-md-11 col-md-offset-1" id="reply-{{$reply->id}}">
     <div class="panel panel-default">
         <div class="panel-heading">
             <div class="level">

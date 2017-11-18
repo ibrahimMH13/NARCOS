@@ -13,7 +13,7 @@
 
     @endslot
     @slot('body')
-        <a href="/{{$activity->subject->favorite->path() }}">
+        <a href="{{url('/').$activity->subject->favorite->path()}}">
             {{$activity->subject->favorite->body}}
         </a>
 
