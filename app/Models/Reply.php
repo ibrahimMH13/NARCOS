@@ -10,11 +10,17 @@ use Illuminate\Database\Eloquent\Model;
 class Reply extends Model
 {
     //
-    use Favoriteable;
-    use RecordActiviteable;
-    protected $guarded =['favorite'];
+    use Favoriteable , RecordActiviteable;
+    protected $guarded =[];
+    protected  $with =["user"];
+
+
     //RelationShip
-    protected $with=[];
+
+    public function path(){
+
+        return $this->thread->path();
+    }
     // RelatioShip
     public function user(){
 

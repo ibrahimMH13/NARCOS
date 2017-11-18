@@ -8,14 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Favorite extends Model
 {
     //
-    use RecordActiviteable;
-    protected $guarded=[];
+     protected $guarded = [];
+     use RecordActiviteable;
 
-
-    //RelationShip
-
-public function reply(){
-
+    public function favorite(){
         return $this->morphTo();
-}
+    }
+
 }
