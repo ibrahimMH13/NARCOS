@@ -18,6 +18,7 @@
                 <div class="flax">
                     {{$reply->body}}
                  </div>
+
                 @if(auth()->check())
                 {!! Form::open(["url"=>"/replies/$reply->id/favorite"]) !!}
               <button class="btn btn-default">
@@ -35,5 +36,12 @@
             </div>
 
         </div>
-    </div>
+             @can('update',$reply)
+                <div class="panel-footer">
+                    {!! Form::open(["method"=>"delete","url"=>"/replies/$reply->id"])!!}
+                    <button class="btn btn-link"><i class="glyphicon glyphicon-remove" style="color: #dd1144;"></i></button>
+                    {!! Form::close() !!}
+                </div>
+            @endcan
+     </div>
 </div>

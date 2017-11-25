@@ -90,6 +90,7 @@ class ReplyController extends Controller
     public function destroy(Reply $reply)
     {
         //
+        $this->authorize('update',$reply);
         if($reply->user_id != auth()->id()){
 
             return response([],403);

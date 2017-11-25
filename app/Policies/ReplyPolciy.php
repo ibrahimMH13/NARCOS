@@ -3,7 +3,7 @@
 namespace App\Policies;
 
 use App\User;
-use App\reply;
+use App\Models\Reply;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class ReplyPolciy
@@ -40,7 +40,7 @@ class ReplyPolciy
      * @param  \App\reply  $reply
      * @return mixed
      */
-    public function update(User $user, reply $reply)
+    public function update(User $user,Reply $reply)
     {
         //
         return $reply->user_id == $user->id;
