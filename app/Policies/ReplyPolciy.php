@@ -43,6 +43,8 @@ class ReplyPolciy
     public function update(User $user, reply $reply)
     {
         //
+        return $reply->user_id == $user->id;
+
     }
 
     /**
