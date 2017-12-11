@@ -1,18 +1,25 @@
-<template>
 
-</template>
 <script>
-    export default {
 
+    export default {
+        props :['attrs'],
         data(){
 
             return {
 
-                editing :false ,
+                editing : false,
+                body : this.attrs.body,
+            }
+        },
+        methods:{
+
+            update(){
+
+                axios.patch('/replies/'+this.attrs.id,{
+                    body :this.body
+                });
+                this.editing = false ;
             }
         }
     }
 </script>
-<style>
-
-</style>
