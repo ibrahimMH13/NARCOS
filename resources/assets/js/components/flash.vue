@@ -20,7 +20,7 @@
             return{
 
                 body:'',
-                show:true
+                show:false
             }
         },
         created(){

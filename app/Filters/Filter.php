@@ -7,9 +7,7 @@
  */
 
 namespace App\Filters;
-
-
-use Illuminate\Http\Request;
+ use Illuminate\Http\Request;
 
 abstract class Filter
 {
@@ -34,8 +32,6 @@ abstract class Filter
 
     }
     protected function getFilters(){
-
-        return $this->request->only($this->filters);
-
-     }
+         return $this->request->only($this->filters);
+      }
 }

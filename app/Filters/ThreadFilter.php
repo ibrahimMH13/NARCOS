@@ -7,7 +7,6 @@
  */
 
 namespace App\Filters;
-
 use App\User;
 
 class ThreadFilter extends Filter
