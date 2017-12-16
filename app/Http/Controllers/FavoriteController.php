@@ -37,6 +37,7 @@ class FavoriteController extends Controller
     public function store(Reply $reply)
     {
         //
+        $this->authorize('update',$reply);
         $reply->addFavorite();
         return back();
 
@@ -82,8 +83,12 @@ class FavoriteController extends Controller
      * @param  \App\Models\Favorite  $favorite
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Favorite $favorite)
+    public function destroy(Reply $reply)
     {
         //
+        $this->authorize('update',$reply);
+        $reply->unFavorite();
+
+
     }
 }

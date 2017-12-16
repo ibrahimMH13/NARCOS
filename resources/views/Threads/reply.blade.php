@@ -13,61 +13,32 @@
                 </div>
 
             </div>
-            <reply-template :attributes="{{$reply}}">
-                <div class="panel-body">
-                    <div class="level">
-                        <div class="flax" v-if="editing">
-                          <textarea></textarea>
-                        </div>
-                        <div class="flax" v-else>
-                            {{$reply->body}}
-                        </div>
-
-                        @if(auth()->check())
-                            {!! Form::open(["url"=>"/replies/$reply->id/favorite"]) !!}
-                            <button class="btn btn-default">
-                                {{ $reply->favorite->count()?$reply->favorite->count():'' }}
-                                <i class="glyphicon glyphicon-heart" style="color:#d62728"></i>
-                            </button>
-                            {!! Form::close() !!}
-                        @else
-                            <span class="btn btn-default">
-                                {{ $reply->favorite->count()?$reply->favorite->count():'' }}
-                                <i class="glyphicon glyphicon-heart">  </i>
-                            </span>
-
-                        @endif
-                    </div>
-
-                </div>
-
-            </reply-template>
             <div class="panel-body">
                 <div class="level">
                     <div class="flax" v-if="editing">
-                    <div class="form-group">
-                        <textarea class="form-control" v-model="body"></textarea>
-                        <button class="btn btn-xs btn-primary" @click="update">Update</button>
-                        <button class="btn btn-xs btn-link" @click="editing =false">Cancel</button>
-                    </div>
+                        <div class="form-group">
+                            <textarea class="form-control" v-model="body"></textarea>
+                            <button class="btn btn-xs btn-primary" @click="update">Update</button>
+                            <button class="btn btn-xs btn-link" @click="editing =false">Cancel</button>
+                        </div>
                     </div>
                     <div class="flax" v-text="body" v-else>
                     </div>
 
-                @if(auth()->check())
-                    {!! Form::open(["url"=>"/replies/$reply->id/favorite"]) !!}
-                    <button class="btn btn-default">
-                        {{ $reply->favorite->count()?$reply->favorite->count():'' }}
-                        <i class="glyphicon glyphicon-heart" style="color:#d62728"></i>
-                    </button>
-                    {!! Form::close() !!}
-                @else
-                    <span class="btn btn-default">
-                        {{ $reply->favorite->count()?$reply->favorite->count():'' }}
-                        <i class="glyphicon glyphicon-heart">  </i>
-                    </span>
+                    @if(auth()->check())
+                        {{---
+                          {!! Form::open(["url"=>"/replies/$reply->id/favorite"]) !!}
+                          <button class="btn btn-default">
+                              {{ $reply->favorite->count()?$reply->favorite->count():'' }}
+                              <i class="glyphicon glyphicon-heart" style="color:#d62728"></i>
+                          </button>
+                          {!! Form::close() !!}
 
-                @endif
+                        --}}
+                        <Favorite :reply="{{$reply}}"></Favorite>
+                    @else
+                        <i class="glyphicon glyphicon-heart" :class="colores"></i>
+                    @endif
                 </div>
             </div>
             @can('update',$reply)

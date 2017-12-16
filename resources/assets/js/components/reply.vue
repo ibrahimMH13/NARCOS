@@ -1,7 +1,9 @@
 
 <script>
-
+    import Favorite from './Favorite.vue';
     export default {
+
+        components:{ Favorite },
         props :['attrs'],
         data(){
 
