@@ -42887,12 +42887,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -42916,12 +42910,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 body: this.body
             });
             this.editing = false;
-            $(this.$el).fadeOut(500);
         },
         destory: function destory() {
-
             axios.delete('/replies/' + this.data.id);
             this.$emit('deleted', this.data.id);
+            $(this.$el).fadeOut(500);
         }
     }
 });
@@ -43132,59 +43125,66 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "panel-body" }, [
-          _c("div", { staticClass: "level" }, [
-            _vm.editing
-              ? _c("div", { staticClass: "flax" }, [
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("textarea", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.body,
-                          expression: "body"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      domProps: { value: _vm.body },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+          _c(
+            "div",
+            { staticClass: "level" },
+            [
+              _vm.editing
+                ? _c("div", { staticClass: "flax" }, [
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("textarea", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.body,
+                            expression: "body"
                           }
-                          _vm.body = $event.target.value
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-xs btn-primary",
-                        on: { click: _vm.update }
-                      },
-                      [_vm._v("Update")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-xs btn-link",
+                        ],
+                        staticClass: "form-control",
+                        domProps: { value: _vm.body },
                         on: {
-                          click: function($event) {
-                            _vm.editing = false
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.body = $event.target.value
                           }
                         }
-                      },
-                      [_vm._v("Cancel")]
-                    )
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-xs btn-primary",
+                          on: { click: _vm.update }
+                        },
+                        [_vm._v("Update")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-xs btn-link",
+                          on: {
+                            click: function($event) {
+                              _vm.editing = false
+                            }
+                          }
+                        },
+                        [_vm._v("Cancel")]
+                      )
+                    ])
                   ])
-                ])
-              : _c("div", {
-                  staticClass: "flax",
-                  domProps: { textContent: _vm._s(_vm.body) }
-                })
-          ])
+                : _c("div", {
+                    staticClass: "flax",
+                    domProps: { textContent: _vm._s(_vm.body) }
+                  }),
+              _vm._v(" "),
+              _c("Favorite", { attrs: { reply: _vm.data } })
+            ],
+            1
+          )
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "panel-footer" }, [

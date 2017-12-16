@@ -24,23 +24,17 @@
                     </div>
                     <div class="flax" v-text="body" v-else>
                     </div>
+
+                    <!--@if(auth()->check())-->
+
+                    <Favorite :reply="data"></Favorite>
                     <!--
 
-                    @if(auth()->check())
-                    {{---
-                    {!! Form::open(["url"=>"/replies/$reply->id/favorite"]) !!}
-                    <button class="btn btn-default">
-                        {{ $reply->favorite->count()?$reply->favorite->count():'' }}
-                        <i class="glyphicon glyphicon-heart" style="color:#d62728"></i>
-                    </button>
-                    {!! Form::close() !!}
-
-                    --}}
-                    <Favorite :reply="{{$reply}}"></Favorite>
                     @else
                     <i class="glyphicon glyphicon-heart" :class="colores"></i>
                     @endif
-                    --->
+
+                    -->
                 </div>
             </div>
           <!--
@@ -79,12 +73,12 @@
                     body :this.body
                 });
                 this.editing = false ;
-                $(this.$el).fadeOut(500);
+
             },
             destory(){
-
                 axios.delete('/replies/'+this.data.id);
                 this.$emit('deleted',this.data.id);
+                $(this.$el).fadeOut(500);
 
             }
 

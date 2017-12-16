@@ -46,21 +46,7 @@
                     </div>
 
 
-                <replies :data="{{$thread->replies}}" @removed="replyCount--"></replies>
-               {{--
-                @forelse($replies as $reply)
-                    @include('Threads.reply')
-
-                @empty
-                    <div class="col-md-8 col-md-offset-2">
-                        <p class="text-center text-capitalize alert alert-link">
-                            NO Reply Yet ,Be First !!
-                        </p>
-                    </div>
-
-                @endforelse
-                 --}}
-
+                    <replies :data="{{$thread->replies}}" @removed="replyCount--"></replies>
 
             @if(auth()->check())
                     <div class="row">
