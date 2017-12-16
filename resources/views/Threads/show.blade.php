@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container" style="padding-bottom: 3%">
+    <thread-view inline-template>
+             <div class="container" style="padding-bottom: 3%">
         <div class="row">
              <div class="col-md-3">
                  <div class="panel panel-default">
@@ -43,8 +44,13 @@
                             </div>
                         @endcan
                     </div>
+
+
+                <replies :data="{{$thread->replies}}"></replies>
+               {{--
                 @forelse($replies as $reply)
                     @include('Threads.reply')
+
                 @empty
                     <div class="col-md-8 col-md-offset-2">
                         <p class="text-center text-capitalize alert alert-link">
@@ -53,6 +59,9 @@
                     </div>
 
                 @endforelse
+                 --}}
+
+
             @if(auth()->check())
                     <div class="row">
                         <div class="col-md-10 col-md-offset-2">
@@ -75,9 +84,9 @@
 
             </div>
 
-            {{$replies->links()}}
+            {{--$replies->links()--}}
         </div>
 
     </div>
-
+    </thread-view>
 @endsection

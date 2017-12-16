@@ -12,7 +12,7 @@ class Thread extends Model
     //
      use RecordActiviteable;
      protected $guarded =[];
-    protected $with=['user'];
+    protected $with=['user','replies'];
 
     //bootable
     protected static function boot()
