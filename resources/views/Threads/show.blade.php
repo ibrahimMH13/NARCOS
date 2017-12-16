@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <thread-view inline-template>
+    <thread-view :init_replies_count="{{$thread->replies_count }}" inline-template>
              <div class="container" style="padding-bottom: 3%">
         <div class="row">
              <div class="col-md-3">
@@ -17,7 +17,7 @@
                         </p>
                      </div>
                     <div class="panel-body">
-                    this post has  {{ $thread->replies_count.' '.str_plural("comment",$thread->replies_count) }}
+                    this post has <i v-text="replyCount"></i> {{str_plural("comment",$thread->replies_count) }}
                     </div>
 
                  </div>
@@ -46,7 +46,7 @@
                     </div>
 
 
-                <replies :data="{{$thread->replies}}"></replies>
+                <replies :data="{{$thread->replies}}" @removed="replyCount--"></replies>
                {{--
                 @forelse($replies as $reply)
                     @include('Threads.reply')

@@ -42687,7 +42687,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    components: { Replies: __WEBPACK_IMPORTED_MODULE_0__Replies_vue___default.a }
+    props: ['init_replies_count'],
+    components: { Replies: __WEBPACK_IMPORTED_MODULE_0__Replies_vue___default.a },
+    data: function data() {
+        return {
+
+            replyCount: this.init_replies_count
+        };
+    }
 });
 
 /***/ }),
@@ -42768,6 +42775,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         removeFromList: function removeFromList(index) {
             //remove from this id One Elemnt the meaning remove me frome this shit
             this.items.splice(index, 1);
+            this.$emit('removed');
         }
     }
 

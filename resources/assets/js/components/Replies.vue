@@ -22,6 +22,7 @@
             removeFromList(index){
                 //remove from this id One Elemnt the meaning remove me frome this shit
                 this.items.splice(index,1);
+                this.$emit('removed');
             }
         }
 
