@@ -13,6 +13,12 @@ use App\Models\Favorite;
 
 trait Favoriteable
 {
+    protected static function bootFavoriteable(){
+
+        static::deleting(function ($model){
+            $model->favorite->each->delete();
+        });
+    }
 
     public function addFavorite(){
         $u=auth()->user()->id;
@@ -43,7 +49,7 @@ trait Favoriteable
 
     public function unFavorite(){
         $attr=["user_id"=> auth()->user()->id];
-         return $this->favorite()->where($attr)->delete();
+         return $this->favorite()->where($attr)->get()->each->delete();
     }
 
 }

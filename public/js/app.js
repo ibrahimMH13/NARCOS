@@ -42647,21 +42647,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         colores: function colores() {
             return [this.isFavorited ? "acitve" : "inactive"];
+        },
+        endpoint: function endpoint() {
+            return '/replies/' + this.reply.id + '/favorite';
         }
     },
     methods: {
+        remove: function remove() {
+            axios.delete(this.endpoint);
+            this.isFavorited = false;
+            this.count--;
+        },
+        add: function add() {
+            this.isFavorited = true;
+            axios.post(this.endpoint);
+            this.isFavorited = true;
+            this.count++;
+        },
         toggle: function toggle() {
-
-            if (this.isFavorited) {
-                axios.delete('/replies/' + this.reply.id + '/favorite');
-                this.isFavorited = false;
-                this.count--;
-            } else {
-                this.isFavorited = true;
-                axios.post('/replies/' + this.reply.id + '/favorite');
-                this.isFavorited = true;
-                this.count++;
-            }
+            this.isFavorited ? this.remove() : this.add();
         }
     }
 

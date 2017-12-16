@@ -12,7 +12,7 @@
         data(){
             return {
                 isFavorited:this.reply.isFavorite,
-                count:this.reply.favorite_count? this.reply.favorite_count:""
+                count:this.reply.favorite_count? this.reply.favorite_count:"",
 
             }
         },
@@ -22,24 +22,27 @@
             },
             colores(){
                 return [this.isFavorited?"acitve":"inactive"];
-            }
+            },
+            endpoint(){
+                return '/replies/'+this.reply.id+'/favorite';
+            },
         },
         methods:{
-
+            remove() {
+                axios.delete(this.endpoint);
+                this.isFavorited = false;
+                this.count--;
+            },
+            add(){
+                this.isFavorited = true;
+                axios.post(this.endpoint);
+                this.isFavorited = true;
+                this.count ++;
+            },
             toggle(){
+             this.isFavorited?this.remove():this.add();
+            },
 
-                if(this.isFavorited){
-                    axios.delete('/replies/'+this.reply.id+'/favorite');
-                    this.isFavorited = false;
-                    this.count--;
-
-                }else{
-                    this.isFavorited = true;
-                    axios.post('/replies/'+this.reply.id+'/favorite');
-                    this.isFavorited = true;
-                    this.count ++;
-                }
-            }
         }
 
     }

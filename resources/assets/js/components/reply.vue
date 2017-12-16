@@ -21,6 +21,8 @@
                     body :this.body
                 });
                 this.editing = false ;
+                this.$emit('deleted',this.attrs.id);
+                $(this.$el).fadeOut(500);
             }
         }
     }
