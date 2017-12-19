@@ -43,7 +43,10 @@ class ReplyController extends Controller
             "body" => request('body'),
             "user_id" => auth()->user()->id
         ];
-        $thread->addReply($newReply);
+        $reply = $thread->addReply($newReply);
+        if(\request()->expectsJson()){
+            return $reply->load('user');
+        }
         return redirect($thread->path())->with('flash','Has been Published New Post');
     }
 

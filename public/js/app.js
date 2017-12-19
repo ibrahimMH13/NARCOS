@@ -11070,7 +11070,7 @@ module.exports = Vue$3;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(11);
-module.exports = __webpack_require__(56);
+module.exports = __webpack_require__(59);
 
 
 /***/ }),
@@ -11162,7 +11162,6 @@ window.Vue = __webpack_require__(9);
 Vue.prototype.authorize = function (handler) {
 
   var user = window.App.user;
-  console.log(user);
   return user ? handler(user) : false;
 };
 
@@ -42186,7 +42185,7 @@ var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(43)
 /* template */
-var __vue_template__ = __webpack_require__(55)
+var __vue_template__ = __webpack_require__(58)
 /* styles */
 var __vue_styles__ = null
 /* scopeId */
@@ -42231,6 +42230,8 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Reply_vue__ = __webpack_require__(44);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Reply_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Reply_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__NewReply_vue__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__NewReply_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__NewReply_vue__);
 //
 //
 //
@@ -42238,15 +42239,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['data'],
-    components: { Reply: __WEBPACK_IMPORTED_MODULE_0__Reply_vue___default.a },
+    components: { Reply: __WEBPACK_IMPORTED_MODULE_0__Reply_vue___default.a, NewReply: __WEBPACK_IMPORTED_MODULE_1__NewReply_vue___default.a },
 
     data: function data() {
         return {
-            items: this.data
+            items: this.data,
+            endpint: location.pathname + '/replies'
         };
     },
 
@@ -42256,6 +42260,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             //remove from this id One Elemnt the meaning remove me frome this shit
             this.items.splice(index, 1);
             this.$emit('removed');
+        },
+        addIn: function addIn(reply) {
+            this.items.push(reply);
+            this.$emit('added');
         }
     }
 
@@ -43047,28 +43055,223 @@ if (false) {
 /* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(56)
+/* template */
+var __vue_template__ = __webpack_require__(57)
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\NewReply.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] NewReply.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-20ba8e06", Component.options)
+  } else {
+    hotAPI.reload("data-v-20ba8e06", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 56 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+
+    props: ['endPoint'],
+    data: function data() {
+        return {
+            body: ''
+        };
+    },
+
+    computed: {
+        loginIN: function loginIN() {
+            return window.App.singIn;
+        }
+    },
+    methods: {
+        addNewReply: function addNewReply() {
+            var _this = this;
+
+            axios.post(this.endPoint, { body: this.body }).then(function (_ref) {
+                var data = _ref.data;
+
+                _this.body = '';
+                _this.$emit('created', data);
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 57 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _vm.loginIN
+      ? _c("div", [
+          _c("div", { staticClass: "col-md-6 col-md-offset-1" }, [
+            _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.body,
+                  expression: "body"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: {
+                name: "body",
+                rows: "4",
+                placeholder:
+                  "Do You Have Reply !! Write Some Things About It,, "
+              },
+              domProps: { value: _vm.body },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.body = $event.target.value
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "btn btn-default",
+              attrs: { type: "submit", value: "Reply" },
+              on: { click: _vm.addNewReply }
+            })
+          ])
+        ])
+      : _c("div", [_vm._m(0)])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "p",
+      {
+        staticClass:
+          "text-capitalize text-center alert alert-dismissible alert-warning"
+      },
+      [
+        _c("span", [
+          _vm._v("Join Us ,Just "),
+          _c("a", { attrs: { href: "" } }, [_vm._v("login")]),
+          _vm._v(" or "),
+          _c("a", { attrs: { href: "#" } }, [_vm._v("Register")])
+        ])
+      ]
+    )
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-20ba8e06", module.exports)
+  }
+}
+
+/***/ }),
+/* 58 */
+/***/ (function(module, exports, __webpack_require__) {
+
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    _vm._l(_vm.items, function(reply, index) {
-      return _c(
-        "div",
-        [
-          _c("reply", {
-            attrs: { data: reply },
-            on: {
-              deleted: function($event) {
-                _vm.removeFromList(index)
+    [
+      _vm._l(_vm.items, function(reply, index) {
+        return _c(
+          "div",
+          [
+            _c("reply", {
+              attrs: { data: reply },
+              on: {
+                deleted: function($event) {
+                  _vm.removeFromList(index)
+                }
               }
-            }
-          })
-        ],
-        1
-      )
-    })
+            })
+          ],
+          1
+        )
+      }),
+      _vm._v(" "),
+      _c("new-reply", {
+        attrs: { endPoint: _vm.endpint },
+        on: { created: _vm.addIn }
+      })
+    ],
+    2
   )
 }
 var staticRenderFns = []
@@ -43082,7 +43285,7 @@ if (false) {
 }
 
 /***/ }),
-/* 56 */
+/* 59 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

@@ -46,27 +46,9 @@
                     </div>
 
 
-                    <replies :data="{{$thread->replies}}" @removed="replyCount--"></replies>
-
-            @if(auth()->check())
-                    <div class="row">
-                        <div class="col-md-10 col-md-offset-2">
-                            {!! Form::open(["url"=>$thread->path()."/replies"]) !!}
-                            <textarea class="form-control" name="body" rows="4"placeholder="Do You Have Reply !! Write Some Things About It,, ">
-
-                    </textarea>
-                            {!! Form::submit('Reply.!',["class"=>"btn btn-default"]) !!}
-                            {!! Form::close() !!}
-                        </div>
-                    </div>
+                    <replies :data="{{$thread->replies}}" @removed="replyCount--" @added="replyCount++"></replies>
 
 
-
-                 @else
-                    <p class="text-capitalize text-center alert alert-dismissible alert-warning">
-                        <span>Join Us ,Just <a href="">login</a> or <a href="#">Register</a></span>
-                    </p>
-                @endif
 
             </div>
 
