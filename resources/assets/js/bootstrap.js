@@ -52,8 +52,10 @@ if (token) {
 //     key: 'your-pusher-key'
 // });
 window.Vue = require('vue');
-window.events = new Vue();
-window.flash  = function (msg) {
 
-    window.events.$emit('flash',msg);
+Vue.prototype.authorize = function (handler) {
+
+    let user = window.App.user;
+    console.log(user);
+     return   user? handler(user) : false ;
 };

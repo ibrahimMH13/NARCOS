@@ -24,13 +24,22 @@
             margin: 0;
         }
     </style>
+    <script>
+        window.App = {!!
+                    json_encode([
+                    'csrfToken'=>csrf_token(),
+                    'user' =>auth()->user(),
+                    'singIn' =>auth()->check()
+                    ]);
+         !!}
+    </script>
 </head>
 <body>
     <div id="app">
       @include('layouts.nav')
 
         @yield('content')
-        <flash msg="{{session('flash')}}"></flash>
+
      </div>
 
     <!-- Scripts -->

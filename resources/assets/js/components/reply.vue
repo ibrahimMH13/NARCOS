@@ -26,21 +26,17 @@
                     </div>
 
                     <!--@if(auth()->check())-->
+                    <div v-if="singIn">
+                        <Favorite :reply="data"></Favorite>
+                    </div>
 
-                    <Favorite :reply="data"></Favorite>
-                    <!--
 
-                    @else
-                    <i class="glyphicon glyphicon-heart" :class="colores"></i>
-                    @endif
-
-                    -->
                 </div>
             </div>
           <!--
             @can('update',$reply)
             -->
-            <div class="panel-footer">
+            <div class="panel-footer" v-if="canUpdate">
                  <button class="btn btn-link"><i class="glyphicon glyphicon-remove" @click="destory" style="color: #dd1144;"></i></button>
                 <i class="btn btn-link glyphicon glyphicon-edit" style="color:#dd1144;" @click="editing = true"></i>
              </div>
@@ -63,6 +59,14 @@
                 editing : false,
                 body : this.data.body,
                 id : this.data.id,
+            }
+        },
+        computed:{
+            singIn(){
+                return window.App.singIn;
+            },
+            canUpdate(){
+              return this.authorize(user => this.data.user_id == user.id);
             }
         },
         methods:{

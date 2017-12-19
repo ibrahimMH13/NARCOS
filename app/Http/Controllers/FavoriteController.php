@@ -37,8 +37,7 @@ class FavoriteController extends Controller
     public function store(Reply $reply)
     {
         //
-        $this->authorize('update',$reply);
-        $reply->addFavorite();
+         $reply->addFavorite();
         return back();
 
     }
@@ -86,7 +85,7 @@ class FavoriteController extends Controller
     public function destroy(Reply $reply)
     {
         //
-        $this->authorize('update',$reply);
+
         $reply->unFavorite();
 
 
